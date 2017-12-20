@@ -7,7 +7,7 @@ Gem::Specification.new do |spec|
   spec.authors = ["Tetsuhiro Sato"]
   spec.email   = ["tetsusat@cisco.com"]
 
-  spec.summary       = %q{Fluentd input plugin to collect IOS-XR telemetry.}
+  spec.summary       = %q{Fluentd input plugin to collect IOS-XE telemetry.}
   spec.description   = spec.summary
   spec.homepage      = "https://github.com/tetsusat/fluent-plugin-telemetry-iosxe"
   spec.license       = "Apache-2.0"
