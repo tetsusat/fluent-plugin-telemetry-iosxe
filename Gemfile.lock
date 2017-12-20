@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    fluent-plugin-telemetry-iosxe (0.0.1)
+    fluent-plugin-telemetry-iosxe (0.0.2)
       fluentd (>= 0.14.10, < 2)
       net-ssh (~> 4.2.0)
       nokogiri (~> 1.8.1)
