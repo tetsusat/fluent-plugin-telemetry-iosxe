@@ -42,7 +42,7 @@ Collect telemetry input and then output to stdout.
   port 830
   user admin
   password admin
-  xpath_filter /ios-emul-oper-db:ios-emul-oper-db/cpu-usage/five-seconds
+  xpath_filters /process-cpu-ios-xe-oper:cpu-usage/cpu-utilization/five-seconds
   tag cpu-usage-five-seconds
   period 500
   @label @telemetry
@@ -54,6 +54,15 @@ Collect telemetry input and then output to stdout.
 </label>
 ```
 
+The output is as below.
+
+```
+2018-12-14 03:30:54.000000000 +0000 cpu-usage-five-seconds: {"cpu_usage":{"cpu_utilization":{"five_seconds":1}}}
+2018-12-14 03:30:59.000000000 +0000 cpu-usage-five-seconds: {"cpu_usage":{"cpu_utilization":{"five_seconds":2}}}
+2018-12-14 03:31:04.000000000 +0000 cpu-usage-five-seconds: {"cpu_usage":{"cpu_utilization":{"five_seconds":1}}}
+...
+```
+
 ### Configuration Example 2
 
 Collect telemetry input and then output to InfluxDB with flattening input.
@@ -63,7 +72,7 @@ Collect telemetry input and then output to InfluxDB with flattening input.
   @type telemetry_iosxe
   server 192.0.2.1
   port 830
-  xpath_filter /ios-emul-oper-db:ios-emul-oper-db/cpu-usage/five-seconds
+  xpath_filters /process-cpu-ios-xe-oper:cpu-usage/cpu-utilization/five-seconds
   user admin
   password admin
   tag cpu-usage-five-seconds
@@ -87,6 +96,19 @@ Collect telemetry input and then output to InfluxDB with flattening input.
   </match>
 </label>
 ```
+The inserted date on InfluxDB is as below.
+
+```
+> select * from "cpu-usage-five-seconds" limit 5
+name: cpu-usage-five-seconds
+time                cpu_usage.cpu_utilization.five_seconds
+----                --------------------------------------
+1544759262000000000 1
+1544759267000000000 2
+1544759272000000000 1
+1544759277000000000 2
+1544759282000000000 1
+```
 
 **server**
 
@@ -99,7 +121,11 @@ TCP port number to subscribe to Telemetry publisher.
 
 **xpath_filter**
 
-XPath filter to specify the information element to subscribe to.
+This parameter is deprecated. Use 'xpath_filters' instead.
+
+**xpath_filters**
+
+XPath filters to specify the information element to subscribe to.
 
 **user**
 
