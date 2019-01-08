@@ -24,7 +24,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "rake", "~> 12.0"
   spec.add_development_dependency "test-unit", "~> 3.0"
   spec.add_runtime_dependency "fluentd", [">= 0.14.10", "< 2"]
-  spec.add_runtime_dependency "net-ssh", ["~> 4.2.0"]
-  spec.add_runtime_dependency "nokogiri", ["~> 1.8.2"]
+  spec.add_runtime_dependency "net-ssh", ["~> 5.1.0"]
+  spec.add_runtime_dependency "nokogiri", ["~> 1.10.0"]
   spec.add_runtime_dependency "nori", ["~> 2.6.0"]
 end
